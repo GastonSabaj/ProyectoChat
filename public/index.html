@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat en Tiempo Real</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Panel de conexión -->
+        <div id="login-panel" class="login-panel">
+            <div class="login-card">
+                <h1>💬 Chat en Tiempo Real</h1>
+                <p>Ingresa tu nombre para comenzar</p>
+                <form id="login-form">
+                    <input 
+                        type="text" 
+                        id="username-input" 
+                        placeholder="Tu nombre de usuario" 
+                        required 
+                        maxlength="20"
+                        autocomplete="off"
+                    >
+                    <select id="room-select">
+                        <option value="general">Sala General</option>
+                    </select>
+                    <button type="submit">Entrar al Chat</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Panel de chat -->
+        <div id="chat-panel" class="chat-panel hidden">
+            <div class="chat-header">
+                <div class="header-info">
+                    <h2 id="room-name">Sala General</h2>
+                    <span id="user-count" class="user-count">0 usuarios</span>
+                </div>
+                <div class="header-actions">
+                    <select id="room-switch" class="room-switch">
+                        <option value="general">Sala General</option>
+                    </select>
+                    <button id="logout-btn" class="logout-btn">Salir</button>
+                </div>
+            </div>
+
+            <div class="chat-body">
+                <div id="messages-container" class="messages-container">
+                    <!-- Los mensajes se agregarán aquí dinámicamente -->
+                </div>
+                
+                <div id="typing-indicator" class="typing-indicator hidden">
+                    <span id="typing-text"></span>
+                </div>
+            </div>
+
+            <div class="chat-footer">
+                <form id="message-form">
+                    <input 
+                        type="text" 
+                        id="message-input" 
+                        placeholder="Escribe un mensaje..." 
+                        autocomplete="off"
+                    >
+                    <button type="submit" id="send-btn">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
